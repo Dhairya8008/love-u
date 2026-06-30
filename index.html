@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irrevocably Yours 🖤</title>
+    <style>
+        :root {
+            --bg-color: #0b0205;
+            --card-bg: #16050b;
+            --primary-red: #ff2a5f;
+            --deep-purple: #4d0a25;
+            --text-color: #fceef2;
+            --sub-text: #b5929b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 2s ease;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .page {
+            display: none;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 42, 95, 0.1);
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 42, 95, 0.15);
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: var(--primary-red);
+            margin-bottom: 22px;
+            font-size: 2.3rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 42, 95, 0.3);
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+
+        .sub-p {
+            font-size: 1.05rem;
+            color: var(--sub-text);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .heart-icon {
+            font-size: 3.5rem;
+            color: var(--primary-red);
+            animation: beat 0.9s infinite alternate;
+            margin-bottom: 15px;
+            display: inline-block;
+            filter: drop-shadow(0 0 8px var(--primary-red));
+        }
+
+        @keyframes beat {
+            to { transform: scale(1.2); }
+        }
+
+        /* Interactive Elements & Triggers */
+        .interactive-text {
+            color: var(--primary-red);
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .interactive-text:hover {
+            color: #ffffff;
+            text-shadow: 0 0 12px var(--primary-red);
+        }
+
+        .btn {
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 42, 95, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: var(--bg-color);
+            box-shadow: 0 0 20px #ffffff;
+        }
+
+        .btn-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            position: relative;
+            height: 60px;
+        }
+
+        #runaway-btn {
+            position: absolute;
+            transition: all 0.15s ease;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: rgba(255, 42, 95, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 42, 95, 0.2);
+            font-size: 1rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Floating Objects */
+        .floating-item {
+            position: fixed;
+            pointer-events: none;
+            animation: floatUp 3.5s linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- PAGE 1: THE INVITATION -->
+        <div id="page1" class="page active">
+            <div class="heart-icon">💝</div>
+            <h1>Hi My Beautiful Favorite Human...</h1>
+            <p>I built this tiny corner of the digital universe just for you because my heart is entirely full of you. You are the prettiest melody in a world full of noise, and you make my life infinitely brighter just by being yourself.</p>
+            <p>Step completely into my world tonight. Read every word carefully...</p>
+            <p class="interactive-text" onclick="nextPage(2)">Look closer into my thoughts... ➔</p>
+        </div>
+
+        <!-- PAGE 2: DEVOTION -->
+        <div id="page2" class="page">
+            <div class="heart-icon">💖</div>
+            <h1>How Much You Mean to Me</h1>
+            <p>If I could give you one thing in life, I would give you the ability to see yourself through my eyes—only then would you realize how completely breathtaking and irreplaceable you really are.</p>
+            <div class="grid">
+                <div class="card"><b style="color:var(--primary-red)">In Your Eyes:</b> I find a home, a safe haven, and my absolute favorite view in the universe.</div>
+                <div class="card"><b style="color:var(--primary-red)">Your Voice:</b> Is the sweetest sound that instantly quietens all of my worst worries.</div>
+                <div class="card"><b style="color:var(--primary-red)">Your Presence:</b> Even the simplest day becomes a beautiful adventure when I'm next to you.</div>
+                <div class="card"><b style="color:var(--primary-red)">Your Soul:</b> You love so deeply and purely, and I am so incredibly lucky to be loved by you.</div>
+            </div>
+            <p class="interactive-text" onclick="nextPage(3)">Uncover the hidden truth... ➔</p>
+        </div>
+
+        <!-- PAGE 3: THE INTENSITY BEGINS -->
+        <div id="page3" class="page">
+            <div class="heart-icon">💗</div>
+            <h1>A Little Secret...</h1>
+            <p>Every single day, I find myself falling for you all over again. No matter how much time passes, my heart still skips a beat when you smile at me. You are my today, my tomorrow, and my forever.</p>
+            <p class="sub-p">"They say love is gentle, but my love for you is fierce. It is a beautiful, consuming fire, and I never want to be rescued from it."</p>
+            <button class="btn" onclick="annoyAlert()">Unlock the secret message vault</button>
+            <br>
+            <p id="secret-trigger" class="interactive-text" style="display:none; margin-top: 25px;" onclick="nextPage(4)">Let the shadows cover us... ➔</p>
+        </div>
+
+        <!-- PAGE 4: THE CONSUMING THOUGHT -->
+        <div id="page4" class="page">
+            <div class="heart-icon">🖤</div>
+            <h1>An Absolute Fact</h1>
+            <p>Do you agree that you are the absolute cutest, most wonderful, endlessly gorgeous girlfriend in the history of the entire world? (Choose wisely! 😉)</p>
+            <p class="sub-p" style="color: var(--primary-red); font-weight: bold;">"Even in the dark, my heart only beats to the rhythm of your name. You possess me entirely."</p>
+            
+            <div class="btn-box">
+                <button class="btn" onclick="confirmLove()">Yes, completely! 🥰</button>
+                <button class="btn" id="runaway-btn" onmouseover="runAway()" onclick="trickedYou()">Absolutely Not 😤</button>
+            </div>
+            <br>
+            <p id="fact-trigger" class="interactive-text" style="display:none; margin-top: 25px;" onclick="nextPage(5)">Surrender to the feeling... ➔</p>
+        </div>
+
+        <!-- PAGE 5: NIGHT ROMANCE & DESIRE -->
+        <div id="page5" class="page">
+            <div class="heart-icon">🍷</div>
+            <h1>The Pleasure of Darkness</h1>
+            <p>When the sun goes down, the world fades away, and all that matters is the space between you and me. True romance isn’t just soft words; it’s the sweet, breathless pull of two souls tangled up in the night, finding absolute paradise in each other’s touch.</p>
+            <p class="sub-p">"I want to lose myself in you entirely. The way a man craves the warmth and presence of the woman who rules his heart, your touch is my ultimate peace, my heavy addiction, and my sweetest escape."</p>
+            <p class="interactive-text" onclick="nextPage(6)">Listen to my deepest whisper... ➔</p>
+        </div>
+
+        <!-- PAGE 6: THE PLEA -->
+        <div id="page6" class="page">
+            <div class="heart-icon">🔥</div>
+            <h1>Only You...</h1>
+            <p>My mind completely spins when I think about how stunning you are. It’s a beautiful torment being away from you, and when you are close, every single instinct in me just wants to hold you tight and never let go.</p>
+            
+            <blockquote style="background: rgba(255,42,95,0.1); padding: 20px; border-radius: 15px; border-left: 4px solid var(--primary-red); text-align: left; line-height: 1.7; font-style: italic;">
+                "can we do it tonight and after that i want to see somthing babyyy i want that yrrrrr plz understand i just wantt cuz its impossible to control when it comes to u soo plzzzzz babyyyyyyy and if u dont want too thats ok but plzzzzz my angel"
+            </blockquote>
+            
+            <p class="interactive-text" style="margin-top: 30px;" onclick="nextPage(7)">Read my final promise... ➔</p>
+        </div>
+
+        <!-- PAGE 7: THE ETERNAL BOND -->
+        <div id="page7" class="page">
+            <div class="heart-icon">❤️‍🔥</div>
+            <h1>My Promise to My Whole World</h1>
+            <p>I promise to hold your hand through every storm, to celebrate every tiny victory with you, and to love you even more on the days when things get hard. You are my favorite person, my best friend, and my greatest blessing.</p>
+            <p class="sub-p" style="font-size: 1.2rem; color: #ff7597; line-height: 1.8;">
+                "I don’t just love you; I am ruined by you in the most beautiful way possible. If the entire universe turned to ash, I would still search for you in the shadows. You are my sweetest obsession, my beautifully chaotic gravity, and I am irrevocably yours. Forever isn't even long enough." 🌹
+            </p>
+            <button class="btn" onclick="spawnObjects()">Let Love Burst Over Us 🖤🔥</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth Page Progression via Bottom Link Selection
+        function nextPage(nextPageNum) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Darken background elements dynamic color control as she goes deeper
+            if(nextPageNum >= 5) {
+                document.body.style.backgroundColor = "#050002";
+            } else {
+                document.body.style.backgroundColor = "#0b0205";
+            }
+
+            document.getElementById('page' + nextPageNum).classList.add('active');
+            spawnObjects(4);
+        }
+
+        // Annoying Popups Challenge
+        function annoyAlert() {
+            alert("⚠️ SYSTEM ERROR: System overloaded by your extreme cuteness.");
+            alert("🚨 ATTENTION: Beautiful girlfriend parameters have exceeded standard levels.");
+            alert("💖 FACT CHECK: It is biologically impossible to love anyone as much as I love you.");
+            alert("🥰 Okay, you survived the popups! The next path is unlocked below!");
+            
+            document.getElementById('secret-trigger').style.display = 'inline-block';
+        }
+
+        // Annoying Runaway Button
+        function runAway() {
+            const btn = document.getElementById('runaway-btn');
+            const x = Math.random() * 260 - 130; 
+            const y = Math.random() * 80 - 40;   
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        
+        function trickedYou() {
+            alert("Hey! How did you even manage to click that?! Cheater! You are perfect, deal with it! 😤❤️");
+            document.getElementById('fact-trigger').style.display = 'inline-block';
+        }
+
+        function confirmLove() {
+            alert("Hehe, I knew you would agree! You have no choice anyway! I love you infinitely! 😘❤️");
+            document.getElementById('fact-trigger').style.display = 'inline-block';
+        }
+
+        // Night Romance Ambient Falling/Floating Objects
+        function spawnObjects(count = 15) {
+            for(let i=0; i<count; i++) {
+                setTimeout(() => {
+                    const item = document.createElement('div');
+                    item.classList.add('floating-item');
+                    item.innerHTML = ['🖤','❤️‍🔥','🌹','✨','🍷','🔥','💋'][Math.floor(Math.random() * 7)];
+                    item.style.left = Math.random() * 100 + 'vw';
+                    item.style.fontSize = (Math.random() * 22 + 18) + 'px';
+                    item.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+                    document.body.appendChild(item);
+                    
+                    setTimeout(() => { item.remove(); }, 3500);
+                }, i * 90);
+            }
+        }
+    </script>
+</body>
+</html>
